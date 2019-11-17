@@ -57,24 +57,6 @@ class HomeScreen extends Component {
         );
     }
 }
-const createTodoList = todoList => (dispatch, getState, { getFirestore }) => {
-    const fireStore = getFirestore();
-    const { profile } = getState().firebase;
-    const authorId = getState().firebase.auth.uid;
-    fireStore.collection('todoLists').add({
-      ...todoList,
-      authorFirstName: profile.firstName,
-      authorLastName: profile.lastName,
-      authorId,
-      createdAt: new Date(),
-    }).then(() => dispatch({
-      type: 'CREATE_TODO_LIST',
-      todoList,
-    })).catch(err => dispatch({
-      type: 'CREATE_TODO_LIST_ERROR',
-      err,
-    }));
-  };
   
 const mapStateToProps = (state) => {
     return {
