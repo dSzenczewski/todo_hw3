@@ -11,7 +11,6 @@ let key = -1;
 class HomeScreen extends Component {
     
     handleNewList = () => {
-        console.log("HURRAY");
         let item = {}
         item.description = "description1";
         item.assigned_to = "assigned_to1";

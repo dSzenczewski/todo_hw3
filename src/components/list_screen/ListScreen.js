@@ -33,6 +33,34 @@ class ListScreen extends Component {
         this.render();
     }
 
+    handleChangeOwner = (event) => {
+        this.setListOwner(event.target.value);
+    }
+
+    setListOwner = (text) => {
+        if (this.props.todoList) {
+            let owner = this.props.todoList.owner;
+            this.props.todoList.owner = text;
+            getFirestore().collection('todoLists').doc(this.props.todoList.id).update(this.props.todoList);
+        }
+        else
+            return "";
+    }
+
+    handleChangeName = (event) => {
+        this.setListName(event.target.value);
+    }
+
+    setListName = (text) => {
+        if (this.props.todoList) {
+            let name = this.props.todoList.name;
+            this.props.todoList.name = text;
+            getFirestore().collection('todoLists').doc(this.props.todoList.id).update(this.props.todoList);
+        }
+        else
+            return "";
+    }
+
     removeList = () => {
         console.log("TRASH");
     }
@@ -59,13 +87,13 @@ class ListScreen extends Component {
                     <div class="col s6">
                         <div className="input-field">
                             <label htmlFor="email">Name</label>
-                            <input className="active" type="text" name="name" id="name" onChange={this.handleChange} value={todoList.name} />
+                            <input className="active" type="text" name="name" id="name" onChange={this.handleChangeName} defaultValue={todoList.name} />
                         </div>
                     </div>
                     <div class="col s6">
                         <div className="input-field">
                             <label htmlFor="password">Owner</label>
-                            <input className="active" type="text" name="owner" id="owner" onChange={this.handleChange} value={todoList.owner} />
+                            <input className="active" type="text" name="owner" id="owner" onChange={this.handleChangeOwner} defaultValue={todoList.owner} />
                         </div>
                     </div>
                     
