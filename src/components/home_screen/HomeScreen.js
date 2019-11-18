@@ -7,10 +7,10 @@ import TodoListLinks from './TodoListLinks'
 import { getFirestore } from 'redux-firestore';
 
 //const db = getFirestore();
-let key = -1;
+//let key = -1;
 class HomeScreen extends Component {
     
-    handleNewList = () => {
+    handleNewList = async () => {
         let item = {}
         item.description = "description1";
         item.assigned_to = "assigned_to1";
@@ -23,7 +23,11 @@ class HomeScreen extends Component {
         item2.due_date = "due_date2";
         item2.completed = "true";
         item2.key = 1;
-        key = key + 1;
+        //key = key + 1;
+
+        const database = await getFirestore().collection("todoLists").get();
+        const key = database.size;
+
         getFirestore().collection('todoLists').doc(key.toString()).set({
             name: "New List " + (key+1).toString(),
             owner: "Unkown",
