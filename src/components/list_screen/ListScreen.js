@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import ItemsList from './ItemsList.js'
 import { firestoreConnect } from 'react-redux-firebase';
+import { getFirestore } from 'redux-firestore';
 
 class ListScreen extends Component {
     state = {
@@ -18,6 +19,19 @@ class ListScreen extends Component {
             ...state,
             [target.id]: target.value,
         }));
+    }
+
+    newItem = () => {
+        let item = {}
+        item.description = "unknown";
+        item.assigned_to = "unknown";
+        item.due_date = "unknown";
+        item.completed = "false";
+        item.key = this.props.todoList.items.length;
+        this.props.todoList.items.push(item);
+        getFirestore().collection('todoLists').doc(this.props.todoList.id).update(this.props.todoList);
+        console.log(this.props.todoList.items);
+        this.render();
     }
 
     render() {
@@ -38,7 +52,34 @@ class ListScreen extends Component {
                     <label htmlFor="password">Owner</label>
                     <input className="active" type="text" name="owner" id="owner" onChange={this.handleChange} value={todoList.owner} />
                 </div>
+                <div class="container">
+                    <div class="row">
+                            <div class="col s3">
+                                <div className="card-content grey-text text-darken-3">
+                                    <span className="card-title">Description</span>
+                                </div>
+                            </div>
+                            <div class="col s3">
+                                <div className="card-content grey-text text-darken-3">
+                                    <span className="card-title">Assigned To</span>
+                                </div>
+                            </div>
+                            <div class="col s3">
+                                <div className="card-content grey-text text-darken-3">
+                                    <span className="card-title">Due Date</span>
+                                </div>
+                            </div>
+                            <div class="col s3">
+                                <div className="card-content grey-text text-darken-3">
+                                    <span className="card-title">Status</span>
+                                </div>
+                            </div>
+                        </div>
+                 </div>
                 <ItemsList todoList={todoList} />
+                <div id="new_item" className= "new_item" onClick={this.newItem}>
+                    +
+                </div>
             </div>
         );
     }
