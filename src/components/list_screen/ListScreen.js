@@ -62,7 +62,8 @@ class ListScreen extends Component {
     }
 
     removeList = () => {
-        console.log("TRASH");
+        getFirestore().collection('todoLists').doc(this.props.todoList.id).delete();
+        this.props.history.push('/');
     }
 
     render() {
