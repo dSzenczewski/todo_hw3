@@ -6,10 +6,14 @@ import { getFirestore } from 'redux-firestore';
 
 export class ItemScreen extends Component {
     state = {
-        todoItem: {}
+        todoItem: {},
+        desc: "",
+        assign: "",
+        date: "",
+        check: ""
     }
 
-    submit = () => {
+    submit = async () => {
         if(this.state != null){
             if(this.state.desc != null) this.props.todoItem.description = this.state.desc;
             if(this.state.assign != null) this.props.todoItem.assigned_to = this.state.assign;
@@ -57,6 +61,12 @@ export class ItemScreen extends Component {
         const index = this.props.match.params.index;
         const db = await getFirestore().collection("todoLists").doc(key.toString()).get();
         this.setState({todoItem: db.data().items[index]});
+        this.setState({
+            desc: this.state.todoItem.description,
+            assign: this.state.todoItem.assigned_to,
+            date: this.state.todoItem.due_date,
+            check: this.state.todoItem.completed
+        });
     }
     render() {
         return (

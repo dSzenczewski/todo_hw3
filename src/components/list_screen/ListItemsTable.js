@@ -21,7 +21,6 @@ export class ListItemsTable extends Component {
         for (var i = 0; i < this.props.todoList.items.length; i++) {
             this.props.todoList.items[i].key = i;
         } 
-        this.props.loadList(this.props.todoList);
     }
 
     sortingDate = (event) => {
@@ -36,7 +35,6 @@ export class ListItemsTable extends Component {
         for (var i = 0; i < this.props.todoList.items.length; i++) {
             this.props.todoList.items[i].key = i;
         } 
-        this.props.loadList(this.props.todoList);
     }
 
     sortingStatus = (event) => {
@@ -51,7 +49,6 @@ export class ListItemsTable extends Component {
         for (var i = 0; i < this.props.todoList.items.length; i++) {
             this.props.todoList.items[i].key = i;
         } 
-        this.props.loadList(this.props.todoList);
     }
 
     render() {
