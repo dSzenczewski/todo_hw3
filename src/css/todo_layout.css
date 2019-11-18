@@ -1,3 +1,7 @@
+[type="checkbox"]:checked, [type="checkbox"]:not(:checked) {
+  opacity: 100;
+}
+
 html {
   min-height: 100%;
 }
