@@ -69,13 +69,16 @@ export class ListItemCard extends Component {
                     {this.props.listItem.due_date}
                 </div>
                 
-                <div className='list_item_card_completed'>
+                {/* <div className='list_item_card_completed'>
                     {this.props.listItem.completed ? "Completed" : ""}
                 </div>
 
                 <div className='list_item_card_not_completed'>
                 {this.props.listItem.completed ? "" : "Pending"}
-                </div>
+                </div> */}
+                {this.props.listItem.completed ? (
+                    <div className='list_item_card_completed'>Completed</div> ) :
+                ( <div className='list_item_card_not_completed'>Pending</div>)}
                 {/* 
                 <div className="list_item_card_toolbar">
                     <div className={this.props.listItem.key === 0 ? "list_item_header_card_disabled" : "list_item_header_card"} id={"move_up"+ this.props.listItem.key} onClick={this.moveUp.bind(this)}>&#11014;</div>
