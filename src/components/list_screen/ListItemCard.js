@@ -51,8 +51,9 @@ export class ListItemCard extends Component {
     }
 
     editItem = () => {
-        console.log("Edit" + this.props.listItem.key);
-        //this.props.history.push('/item');
+        var index = this.props.listItem.key;
+        var key = this.props.todoList.key;
+        this.props.history.push('/item/' + key.toString() + '/' + index.toString());
     }
 
 

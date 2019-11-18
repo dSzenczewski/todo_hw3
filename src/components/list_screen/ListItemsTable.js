@@ -68,7 +68,8 @@ export class ListItemsTable extends Component {
                             key={todoItem.key}
                             listItem={todoItem}
                             todoList={this.props.todoList}
-                            loadList={this.props.loadList} />
+                            loadList={this.props.loadList}
+                            history={this.props.history} />
                     ))
                 }
             {/*

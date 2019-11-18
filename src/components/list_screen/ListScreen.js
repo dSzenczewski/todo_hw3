@@ -22,6 +22,9 @@ class ListScreen extends Component {
         }));
     }
 
+    history = () => {
+        console.log("history");
+    }
     newItem = () => {
         let item = {}
         item.description = "unknown";
@@ -127,7 +130,7 @@ class ListScreen extends Component {
                             </div>
                     </div>
                     */}
-                    <ListItemsTable todoList={todoList} />
+                    <ListItemsTable todoList={todoList} history={this.props.history}/>
                     
                     <div id="new_item" className= "new_item" onClick={this.newItem}>
                         +
