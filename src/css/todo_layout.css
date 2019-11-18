@@ -48,3 +48,13 @@ input[type=email]:not(.browser-default):focus:not([readonly]) + label,
 input[type=password]:not(.browser-default):focus:not([readonly]) + label{
   color: #ec407a !important;
 }
+
+.new_item{
+  font-size: 40pt;
+  position: relative;
+  left: 50%;
+}
+
+.new_item:hover{
+  color: green;    
+}
