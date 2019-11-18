@@ -30,8 +30,11 @@ class ListScreen extends Component {
         item.key = this.props.todoList.items.length;
         this.props.todoList.items.push(item);
         getFirestore().collection('todoLists').doc(this.props.todoList.id).update(this.props.todoList);
-        console.log(this.props.todoList.items);
         this.render();
+    }
+
+    removeList = () => {
+        console.log("TRASH");
     }
 
     render() {
@@ -43,15 +46,31 @@ class ListScreen extends Component {
 
         return (
             <div className="container white">
-                <h5 className="grey-text text-darken-3">Todo List</h5>
-                <div className="input-field">
-                    <label htmlFor="email">Name</label>
-                    <input className="active" type="text" name="name" id="name" onChange={this.handleChange} value={todoList.name} />
+                <div class="row">
+                    <div class="col s6">
+                        <h5 className="grey-text text-darken-3">Todo List</h5>
+                    </div>
+                    <div class="col s6">
+                        <div id="list_trash" onClick = {this.removeList}>&#128465;</div>
+                    </div>  
                 </div>
-                <div className="input-field">
-                    <label htmlFor="password">Owner</label>
-                    <input className="active" type="text" name="owner" id="owner" onChange={this.handleChange} value={todoList.owner} />
+                
+                <div class="row">
+                    <div class="col s6">
+                        <div className="input-field">
+                            <label htmlFor="email">Name</label>
+                            <input className="active" type="text" name="name" id="name" onChange={this.handleChange} value={todoList.name} />
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div className="input-field">
+                            <label htmlFor="password">Owner</label>
+                            <input className="active" type="text" name="owner" id="owner" onChange={this.handleChange} value={todoList.owner} />
+                        </div>
+                    </div>
+                    
                 </div>
+               
                 <div class="container">
                     <div class="row">
                             <div class="col s3">
