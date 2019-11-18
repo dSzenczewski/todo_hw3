@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import ItemsList from './ItemsList.js'
+import ListItemsTable from './ListItemsTable.js'
 import { firestoreConnect } from 'react-redux-firebase';
 import { getFirestore } from 'redux-firestore';
 
@@ -74,59 +75,63 @@ class ListScreen extends Component {
         }
 
         return (
-            <div className="container white">
-                <div class="row">
-                    <div class="col s6">
-                        <h5 className="grey-text text-darken-3">Todo List</h5>
-                    </div>
-                    <div class="col s6">
-                        <div id="list_trash" onClick = {this.removeList}>&#128465;</div>
-                    </div>  
-                </div>
-                
-                <div class="row">
-                    <div class="col s6">
-                        <div className="input-field">
-                            <label htmlFor="email">Name</label>
-                            <input className="active" type="text" name="name" id="name" onChange={this.handleChangeName} defaultValue={todoList.name} />
+            <div class="clearfix">
+                <div className="container white">
+                    <div class="row">
+                        <div class="col s6">
+                            <h5 className="grey-text text-darken-3">Todo List</h5>
                         </div>
-                    </div>
-                    <div class="col s6">
-                        <div className="input-field">
-                            <label htmlFor="password">Owner</label>
-                            <input className="active" type="text" name="owner" id="owner" onChange={this.handleChangeOwner} defaultValue={todoList.owner} />
-                        </div>
+                        <div class="col s6">
+                            <div id="list_trash" onClick = {this.removeList}>&#128465;</div>
+                        </div>  
                     </div>
                     
-                </div>
-               
-                <div class="container">
                     <div class="row">
-                            <div class="col s3">
-                                <div className="card-content grey-text text-darken-3">
-                                    <span className="card-title">Description</span>
-                                </div>
-                            </div>
-                            <div class="col s3">
-                                <div className="card-content grey-text text-darken-3">
-                                    <span className="card-title">Assigned To</span>
-                                </div>
-                            </div>
-                            <div class="col s3">
-                                <div className="card-content grey-text text-darken-3">
-                                    <span className="card-title">Due Date</span>
-                                </div>
-                            </div>
-                            <div class="col s3">
-                                <div className="card-content grey-text text-darken-3">
-                                    <span className="card-title">Status</span>
-                                </div>
+                        <div class="col s6">
+                            <div className="input-field">
+                                <label htmlFor="email">Name</label>
+                                <input className="active" type="text" name="name" id="name" onChange={this.handleChangeName} defaultValue={todoList.name} />
                             </div>
                         </div>
-                 </div>
-                <ItemsList todoList={todoList} />
-                <div id="new_item" className= "new_item" onClick={this.newItem}>
-                    +
+                        <div class="col s6">
+                            <div className="input-field">
+                                <label htmlFor="password">Owner</label>
+                                <input className="active" type="text" name="owner" id="owner" onChange={this.handleChangeOwner} defaultValue={todoList.owner} />
+                            </div>
+                        </div>
+                        
+                    </div>
+                {/* 
+                    <div class="container">
+                        <div class="row">
+                                <div class="col s3">
+                                    <div className="card-content grey-text text-darken-3">
+                                        <span className="card-title">Description</span>
+                                    </div>
+                                </div>
+                                <div class="col s3">
+                                    <div className="card-content grey-text text-darken-3">
+                                        <span className="card-title">Assigned To</span>
+                                    </div>
+                                </div>
+                                <div class="col s3">
+                                    <div className="card-content grey-text text-darken-3">
+                                        <span className="card-title">Due Date</span>
+                                    </div>
+                                </div>
+                                <div class="col s3">
+                                    <div className="card-content grey-text text-darken-3">
+                                        <span className="card-title">Status</span>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    */}
+                    <ListItemsTable todoList={todoList} />
+                    
+                    <div id="new_item" className= "new_item" onClick={this.newItem}>
+                        +
+                    </div>
                 </div>
             </div>
         );
