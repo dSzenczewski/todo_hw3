@@ -13,14 +13,14 @@ class HomeScreen extends Component {
     handleNewList = () => {
         console.log("HURRAY");
         let item = {}
-        item.description = "unknown";
-        item.assigned_to = "unknown";
-        item.due_date = "unknown";
+        item.description = "description";
+        item.assigned_to = "assigned_to";
+        item.due_date = "due_date";
         item.completed = "false";
         item.key = 0;
         key = key + 1;
         getFirestore().collection('todoLists').doc(key.toString()).set({
-            name: "Unknown",
+            name: "New List " + (key+1).toString(),
             owner: "Unkown",
             key: key,
             items: [item],
