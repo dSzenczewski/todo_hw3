@@ -108,13 +108,13 @@ class ListScreen extends Component {
                     <div class="row">
                         <div class="col s6">
                             <div className="input-field">
-                                <label htmlFor="email">Name</label>
+                                <span>Name:</span>
                                 <input className="active" type="text" name="name" id="name" onChange={this.handleChangeName} defaultValue={todoList.name} />
                             </div>
                         </div>
                         <div class="col s6">
                             <div className="input-field">
-                                <label htmlFor="password">Owner</label>
+                                <span>Owner:</span>
                                 <input className="active" type="text" name="owner" id="owner" onChange={this.handleChangeOwner} defaultValue={todoList.owner} />
                             </div>
                         </div>
