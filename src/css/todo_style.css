@@ -57,7 +57,7 @@ div.banner {
 }
 #list_details_owner_container {}
 #list_trash {
-  font-size: 20pt;
+  font-size: 40pt;
 }
 #list_trash:hover {
   color: var(--swatch-accent);

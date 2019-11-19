@@ -26,10 +26,17 @@ class ListScreen extends Component {
         console.log("history");
     }
     newItem = () => {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+
         let item = {}
-        item.description = "unknown";
-        item.assigned_to = "unknown";
-        item.due_date = "unknown";
+        item.description = "Unknown";
+        item.assigned_to = "Unknown";
+        item.due_date = today;
         item.completed = false;
         item.key = this.props.todoList.items.length;
         this.props.todoList.items.push(item);

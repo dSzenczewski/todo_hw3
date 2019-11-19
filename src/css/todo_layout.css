@@ -66,14 +66,39 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
 
 .list_item_task_header, .list_item_due_date_header, .list_item_status_header {
   display: inline-block;  
-  width: 33%;
+  width: 25%;
 } 
 
 .list_item_card_assigned_to, .list_item_card_due_date, 
 .list_item_card_completed, .list_item_card_not_completed {
   display: inline-block;
-  width: 33%;
+  width: 25%;
 }
+
+.fixed-action-btn {
+  position: relative;
+  display: inline-block;
+  left: 18%;
+}
+
+.fixed-action-btn.direction-left ul, .fixed-action-btn.direction-right ul {
+  text-align: right;
+  right: 30px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 100%;
+  left: auto;
+  width: 500px;
+}
+
+.fixed-action-btn ul {
+  position: absolute;
+  bottom: 64px;
+  margin: 0;
+  visibility: hidden;
+}
+
 
 /* LIST SCREEN CLASSES 
 .list_item_card, .list_item_add_card, .list_item_header_card, .list_item_header_card_disabled {
