@@ -72,7 +72,16 @@ class ListScreen extends Component {
             return "";
     }
 
+    deletePopup = () => {
+        document.getElementById("delete_popup").setAttribute("class", "onscreen");
+    }
+
+    notRemoved = () => {
+        document.getElementById("delete_popup").setAttribute("class", "offscreen");
+    }
+
     removeList = () => {
+        document.getElementById("delete_popup").setAttribute("class", "offscreen");
         getFirestore().collection('todoLists').doc(this.props.todoList.id).delete();
         this.props.history.push('/');
     }
@@ -92,7 +101,7 @@ class ListScreen extends Component {
                             <h5 className="grey-text text-darken-3">Todo List</h5>
                         </div>
                         <div class="col s6">
-                            <div id="list_trash" onClick = {this.removeList}>&#128465;</div>
+                            <div id="list_trash" onClick = {this.deletePopup}>&#128465;</div>
                         </div>  
                     </div>
                     
@@ -137,6 +146,18 @@ class ListScreen extends Component {
                             </div>
                     </div>
                     */}
+                    <div id="delete_popup" className="offscreen">
+                        <p>Delete list?
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            Are you sure you want to delete this list?
+                        </p>
+
+                        <button id="yes_delete" onClick={this.removeList}>Yes</button>
+                        <button id="no_delete" onClick={this.notRemoved}>No</button>
+                        <p>The list will not be retreivable.</p>
+                    </div>
                     <ListItemsTable todoList={todoList} history={this.props.history}/>
                     
                     <div id="new_item" className= "new_item" onClick={this.newItem}>

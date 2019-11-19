@@ -99,7 +99,22 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
   visibility: hidden;
 }
 
-
+#delete_popup{
+  z-index: 50;
+  position: absolute;
+  top: 10%;
+  background-color: darkkhaki;
+  transition: left 1s;
+  }
+  
+  #delete_popup.onscreen{
+  left: 30%;
+  } 
+  
+  #delete_popup.offscreen{
+     left: -50%; 
+  } 
+  
 /* LIST SCREEN CLASSES 
 .list_item_card, .list_item_add_card, .list_item_header_card, .list_item_header_card_disabled {
   cursor: pointer;

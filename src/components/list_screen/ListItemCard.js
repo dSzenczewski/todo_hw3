@@ -88,7 +88,7 @@ export class ListItemCard extends Component {
                     floating
                     icon="&#8801;"
                     fab={{direction: 'left'}}
-                    className="red"
+                    className="blue"
                     small
                 >
                 <Button floating icon="&#11014;" className="green" onClick={this.moveUp}/>
