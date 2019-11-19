@@ -1,5 +1,6 @@
 [type="checkbox"]:checked, [type="checkbox"]:not(:checked) {
   opacity: 100;
+  pointer-events: auto;
 }
 
 html {

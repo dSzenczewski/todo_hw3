@@ -21,13 +21,13 @@ class HomeScreen extends Component {
         item.description = "description1";
         item.assigned_to = "assigned_to1";
         item.due_date = today;
-        item.completed = "false";
+        item.completed = false;
         item.key = 0;
         let item2 = {}
         item2.description = "description2";
         item2.assigned_to = "assigned_to2";
         item2.due_date = today;
-        item2.completed = "true";
+        item2.completed = true;
         item2.key = 1;
         //key = key + 1;
 

@@ -30,7 +30,7 @@ class ListScreen extends Component {
         item.description = "unknown";
         item.assigned_to = "unknown";
         item.due_date = "unknown";
-        item.completed = "false";
+        item.completed = false;
         item.key = this.props.todoList.items.length;
         this.props.todoList.items.push(item);
         getFirestore().collection('todoLists').doc(this.props.todoList.id).update(this.props.todoList);

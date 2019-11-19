@@ -10,17 +10,28 @@ export class ItemScreen extends Component {
         desc: "",
         assign: "",
         date: "",
-        check: ""
+        check: true
     }
 
     submit = async () => {
         if(this.state != null){
-            if(this.state.desc != null) this.props.todoItem.description = this.state.desc;
-            if(this.state.assign != null) this.props.todoItem.assigned_to = this.state.assign;
-            if(this.state.date != null) this.props.todoItem.due_date = this.state.date;
-            if(this.state.check != null) this.props.todoItem.completed = this.state.check;
+            if(this.state.desc != null) this.state.todoItem.description = this.state.desc;
+            if(this.state.assign != null) this.state.todoItem.assigned_to = this.state.assign;
+            if(this.state.date != null) this.state.todoItem.due_date = this.state.date;
+            if(this.state.check != null) this.state.todoItem.completed = this.state.check;
         }
-        this.props.loadList(this.props.todoList);
+        const key = this.props.match.params.key;
+        const index = this.props.match.params.index;
+        const db = await getFirestore().collection("todoLists").doc(key.toString()).get();
+        const items = db.data().items;
+        items[index].description = this.state.desc;
+        items[index].assigned_to = this.state.assign;
+        items[index].due_date = this.state.date;
+        items[index].completed = this.state.check;
+
+        getFirestore().collection("todoLists").doc(key.toString()).update({items: items});
+        this.props.history.push('/todoList/' + key.toString());
+        
     }
 
     cancel = () => {
@@ -53,6 +64,7 @@ export class ItemScreen extends Component {
     }
 
     check = (event) => {
+        console.log("CLICKED");
         this.setState({check: event.target.checked});
     }
 
@@ -92,7 +104,7 @@ export class ItemScreen extends Component {
                 </div>
                 <div id="list_completed_container" class="text_toolbar">
                         <span id="list_item_completed" class="info">Completed:</span>
-                        <input type="checkbox" id="list_checkbox" onChange={this.check} defaultChecked={this.state.todoItem.completed}/>
+                        <input type="checkbox" id="list_checkbox" onClick={this.check} defaultChecked={this.state.todoItem.completed}/>
                         
                 </div>
                 <div id="buttons_container">
